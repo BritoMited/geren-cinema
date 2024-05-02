@@ -7,6 +7,14 @@ public class Cadeiras {
         this.cadeira = cadeira;
     }
 
+    public String getCadeira() {
+        return cadeira;
+    }
+
+    public void setCadeira(String cadeira) {
+        this.cadeira = cadeira;
+    }
+
     @Override
     public String toString() {
         return "Cadeiras{" +
