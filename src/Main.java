@@ -1,24 +1,32 @@
 import entidades.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Main {
     public static void main(String[] args) {
 
-        Ingresso ingresso = new Ingresso(20.00, new Cadeiras("A2", true), new Cliente(18, true));
-        Ingresso ingresso3 = new Ingresso(20.00, new Cadeiras("A3", true), new Cliente(17, true));
-        Ingresso ingresso4 = new Ingresso(20.00, new Cadeiras("A4", true), new Cliente(18, false));
-        Ingresso ingresso5 = new Ingresso(20.00, new Cadeiras("A5", true), new Cliente(28, false));
-        Ingresso ingresso6 = new Ingresso(20.00, new Cadeiras("A6", true), new Cliente(18, true));
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");
+        String cc = "12/04/24 19:30";
+        LocalDateTime horario = LocalDateTime.parse(cc, dtf);
 
 
-        Sessão sessão = new Sessão(new Filme("Ficção","Interestelar"));
 
-        sessão.addIngresso(ingresso.getCadeira(), ingresso);
-        sessão.addIngresso(ingresso3.getCadeira(), ingresso3);
-        sessão.addIngresso(ingresso4.getCadeira(), ingresso4);
-        sessão.addIngresso(ingresso5.getCadeira(), ingresso5);
-        sessão.addIngresso(ingresso6.getCadeira(), ingresso6);
+        Filme filme = new Filme("interestelas", "acao");
+        Cliente cliente = new Cliente(18, true);
+        Cadeira cadeira = new Cadeira("A7");
 
 
-        System.out.println(sessão);
+
+        Sessao sessao = new Sessao(filme, horario, 20.00);
+        sessao.gerarCadeiras(8, 8);
+        sessao.listarCadeiras();
+
+        Ingresso ingresso = new Ingresso(sessao.getFilme(),cadeira, sessao.getHorario(), sessao.getValor(), cliente);
+
+        sessao.ocupar(ingresso.getCadeira());
+        System.out.println();
+        sessao.listarCadeiras();
+
     }
 }

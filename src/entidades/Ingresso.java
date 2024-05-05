@@ -1,42 +1,64 @@
 package entidades;
 
+import java.time.LocalDateTime;
+
 public class Ingresso {
-    private Double preco;
-    private Cadeiras cadeira;
+    private Filme filme;
+    private Cadeira cadeira;
+    private LocalDateTime horario;
+    private Double valor;
     private Cliente cliente;
 
-    public Ingresso(Double preco, Cadeiras cadeira, Cliente cliente) {
-        if(cliente.getIdade() < 18 || cliente.getEstudante() == true){
-            this.preco = preco/2;
+    public Ingresso(Filme filme, Cadeira cadeira, LocalDateTime horario, Double valor, Cliente cliente) {
+        this.filme = filme;
+        this.cadeira = cadeira;
+        this.horario = horario;
+        this.cliente = cliente;
+        if(cliente.getIdade() < 18 || cliente.getEstudante()){
+            this.valor = valor/2;
         }else{
-            this.preco = preco;
+            this.valor = valor;
         }
 
-        this.cadeira = cadeira;
-        this.cliente = cliente;
     }
 
-    public Double getPreco() {
-        return preco;
+    public Filme getFilme() {
+        return filme;
     }
 
-    public void setPreco(Double preco) {
-        this.preco = preco;
+    public void setFilme(Filme filme) {
+        this.filme = filme;
     }
 
-    public Cadeiras getCadeira() {
+    public Cadeira getCadeira() {
         return cadeira;
     }
 
-    public void setCadeira(Cadeiras cadeira) {
+    public void setCadeira(Cadeira cadeira) {
         this.cadeira = cadeira;
     }
 
-    @Override
-    public String toString() {
-        return "Ingresso{" +
-                "preco=" + preco +
-                '}';
+    public LocalDateTime getHorario() {
+        return horario;
     }
-    // preco vai receber um metodo que calcula preço
+
+    public void setHorario(LocalDateTime horario) {
+        this.horario = horario;
+    }
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }

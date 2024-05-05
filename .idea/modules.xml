@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/geren-cinema.iml" filepath="$PROJECT_DIR$/geren-cinema.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cinema.iml" filepath="$PROJECT_DIR$/cinema.iml" />
     </modules>
   </component>
 </project>
