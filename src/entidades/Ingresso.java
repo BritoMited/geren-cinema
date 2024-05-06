@@ -61,4 +61,16 @@ public class Ingresso {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+
+    @Override
+    public String toString() {
+        return "Ingresso{" +
+                "filme=" + filme +
+                ", cadeira=" + cadeira +
+                ", horario=" + horario +
+                ", valor=" + valor +
+                ", cliente=" + cliente +
+                '}';
+    }
 }

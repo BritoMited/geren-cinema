@@ -24,4 +24,12 @@ public class Cliente {
     public void setEstudante(Boolean estudante) {
         this.estudante = estudante;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "idade=" + idade +
+                ", estudante=" + estudante +
+                '}';
+    }
 }

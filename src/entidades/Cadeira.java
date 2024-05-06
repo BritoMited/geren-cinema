@@ -31,5 +31,5 @@ public class Cadeira {
     public String toString() {
         return numero + " " +  ocupado;
     }
-    
+
 }

@@ -82,9 +82,7 @@ public class Sessao {
 
         for (char row = 'A'; row < 'A' + numLinhas; row++) {
             for (int num = 1; num <= assentosPorLinha; num++) {
-                String nomeCadeira = String.valueOf(row) + num;
-                Cadeira cadeira = new Cadeira(nomeCadeira);
-                cadeiras.add(cadeira);
+                cadeiras.add(new Cadeira(String.valueOf(row) + num));
             }
         }
 
@@ -101,12 +99,21 @@ public class Sessao {
         }
     }
 
+    public void listarIngressos(){
+        for(Ingresso i: getIngressos()) {
+            System.out.print(i);
+            System.out.println();
+        }
+    }
+
     public void ocupar(Cadeira cadeira){
         for(Cadeira c: getCadeiras()) {
-            if(cadeira.getNumero().equals(c.getNumero())){
+            if(cadeira.getNumero().equals(c.getNumero()) && !c.getOcupado()){
                 c.ocupar();
+                return;
             }
         }
+        System.out.println("ja está ocupada amigo");
     }
 
 }
