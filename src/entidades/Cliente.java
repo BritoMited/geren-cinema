@@ -1,14 +1,16 @@
 package entidades;
 
 public class Cliente {
-    private Integer idade;
-    private Boolean estudante;
+    private Integer idade; // Idade do cliente
+    private Boolean estudante; // Indica se o cliente é estudante ou não
 
+    // Construtor
     public Cliente(Integer idade, Boolean estudante) {
         this.idade = idade;
         this.estudante = estudante;
     }
 
+    // Métodos getters e setters
     public Integer getIdade() {
         return idade;
     }
@@ -25,11 +27,10 @@ public class Cliente {
         this.estudante = estudante;
     }
 
+    // Sobrescrita do método toString para representação textual do cliente
     @Override
     public String toString() {
-        return "Cliente{" +
-                "idade=" + idade +
-                ", estudante=" + estudante +
-                '}';
+        return " idade: " + idade +
+                ", estudante: " + estudante;
     }
 }

@@ -6,24 +6,20 @@ import java.util.List;
 import java.util.UUID;
 
 public class Sessao {
-    private Filme filme;
-    private LocalDateTime horario;
-    //mudar para localdatetime
-    private Double valor;
-    List<Cadeira> cadeiras;
-    List<Ingresso> ingressos = new ArrayList<>();
+    private Filme filme; // Filme da sessão
+    private LocalDateTime horario; // Horário da sessão
+    private Double valor; // Valor do ingresso para a sessão
+    private List<Cadeira> cadeiras; // Lista de cadeiras na sessão
+    private List<Ingresso> ingressos = new ArrayList<>(); // Lista de ingressos vendidos para a sessão
 
+    // Construtor
     public Sessao(Filme filme, LocalDateTime horario, Double preço) {
         this.filme = filme;
         this.horario = horario;
         this.valor = preço;
     }
 
-    public Sessao() {
-    }
-
-    // metodos get set
-
+    // Métodos getters e setters
     public Filme getFilme() {
         return filme;
     }
@@ -64,11 +60,12 @@ public class Sessao {
         this.ingressos = ingressos;
     }
 
-    // funções
+    // Adiciona um ingresso à lista de ingressos vendidos para a sessão
     public void addIngresso(Ingresso ingresso){
         ingressos.add(ingresso);
     }
 
+    // Remove um ingresso da lista de ingressos vendidos para a sessão com base no UUID
     public void removeIngresso(UUID id){
         for(Ingresso i: ingressos){
             if(i.getId().equals(id)){
@@ -77,8 +74,20 @@ public class Sessao {
             }
         }
         System.out.println("Não encontrado");
+
+    }
+    //Procurar Ingresso pelo ID
+    public Ingresso findIngresso(UUID id){
+        Ingresso u = null;
+        for(Ingresso i: ingressos){
+            if(i.getId().equals(id)){
+               u = i;
+            }
+        }
+        return u;
     }
 
+    // Calcula e retorna o total vendido em ingressos para a sessão
     public Double vendaIngressos(){
         double sum = 0;
         for(Ingresso i: getIngressos()) {
@@ -87,10 +96,12 @@ public class Sessao {
         return sum;
     }
 
+    // Adiciona uma cadeira à lista de cadeiras na sessão
     public void addCadeira(String numero){
         cadeiras.add(new Cadeira(numero));
     }
 
+    // Gera e retorna uma lista de cadeiras para a sessão com base no número de linhas e assentos por linha
     public List<Cadeira> gerarCadeiras(int numLinhas, int assentosPorLinha) {
         this.cadeiras = new ArrayList<>();
 
@@ -103,6 +114,7 @@ public class Sessao {
         return cadeiras;
     }
 
+    // Lista as cadeiras na sessão
     public void listarCadeiras(){
         int i = 0;
         for(Cadeira c: getCadeiras()) {
@@ -114,6 +126,7 @@ public class Sessao {
 
     }
 
+    // Lista os ingressos vendidos para a sessão
     public void listarIngressos(){
         for(Ingresso i: getIngressos()) {
             System.out.print(i);
@@ -121,16 +134,17 @@ public class Sessao {
         }
     }
 
+    // Verifica se uma cadeira está disponível
     public Boolean isDisponivel(String cadeira){
         for(Cadeira c: getCadeiras()) {
-                if(cadeira.equals(c.getNumero()) && c.getOcupado()){
-                    return true;
-                }
+            if(cadeira.equals(c.getNumero()) && c.getOcupado()){
+                return true;
             }
+        }
         return false;
     }
 
-
+    // Ocupa uma cadeira na sessão
     public void ocupar(String cadeira){
         for(Cadeira c: getCadeiras()) {
             if(cadeira.equals(c.getNumero())){
@@ -139,13 +153,12 @@ public class Sessao {
         }
     }
 
+    // Sobrescrita do método toString para representação textual da sessão
     @Override
     public String toString() {
-        return "Sessao{" +
-                "filme=" + filme +
-                ", horario=" + horario +
-                ", valor=" + valor +
-                ", ingressos=" + ingressos +
-                '}';
+        return
+                 filme +
+                ", horario:" + horario +
+                ", valor: " + valor;
     }
 }

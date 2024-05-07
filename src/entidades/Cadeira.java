@@ -1,15 +1,16 @@
 package entidades;
 
 public class Cadeira {
-    private String numero;
-    private Boolean ocupado;
+    private String numero; // Número da cadeira
+    private Boolean ocupado; // Indica se a cadeira está ocupada ou não
 
+    // Construtor
     public Cadeira(String numero) {
         this.numero = numero;
-        this.ocupado = false;
+        this.ocupado = false; // Inicialmente, a cadeira está desocupada
     }
 
-    // get set
+    // Métodos getters e setters
     public String getNumero() {
         return numero;
     }
@@ -21,15 +22,15 @@ public class Cadeira {
     public Boolean getOcupado() {
         return ocupado;
     }
-    // metodos
 
+    // Método para ocupar a cadeira
     public void ocupar() {
         this.ocupado = true;
     }
 
+    // Sobrescrita do método toString para representação textual da cadeira
     @Override
     public String toString() {
-        return numero + " " +  ocupado;
+        return numero + " " +  ocupado; // Retorna o número da cadeira seguido de sua condição de ocupação
     }
-
 }

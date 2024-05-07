@@ -28,6 +28,7 @@ public class Ingresso {
 
     public UUID getId() {
         return id;
+
     }
     public Filme getFilme() {
         return filme;
@@ -72,12 +73,11 @@ public class Ingresso {
 
     @Override
     public String toString() {
-        return "Ingresso{" +
-                "id=" + id +
-                ", filme=" + filme +
-                ", horario=" + horario +
-                ", valor=" + valor +
-                ", cliente=" + cliente +
-                '}';
+        return "Ingresso" +
+                " id: " + id +
+                ", filme: " + filme +
+                ", horario: " + horario +
+                ", valor: R$ " + valor +
+                    cliente;
     }
 }
