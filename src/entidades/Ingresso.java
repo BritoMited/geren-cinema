@@ -1,8 +1,11 @@
 package entidades;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class Ingresso {
+
+    private UUID id;
     private Filme filme;
     private Cadeira cadeira;
     private LocalDateTime horario;
@@ -10,6 +13,7 @@ public class Ingresso {
     private Cliente cliente;
 
     public Ingresso(Filme filme, Cadeira cadeira, LocalDateTime horario, Double valor, Cliente cliente) {
+        this.id = UUID.randomUUID();
         this.filme = filme;
         this.cadeira = cadeira;
         this.horario = horario;
@@ -22,6 +26,9 @@ public class Ingresso {
 
     }
 
+    public UUID getId() {
+        return id;
+    }
     public Filme getFilme() {
         return filme;
     }
@@ -30,8 +37,8 @@ public class Ingresso {
         this.filme = filme;
     }
 
-    public Cadeira getCadeira() {
-        return cadeira;
+    public String getCadeira() {
+        return cadeira.getNumero();
     }
 
     public void setCadeira(Cadeira cadeira) {
@@ -66,8 +73,8 @@ public class Ingresso {
     @Override
     public String toString() {
         return "Ingresso{" +
-                "filme=" + filme +
-                ", cadeira=" + cadeira +
+                "id=" + id +
+                ", filme=" + filme +
                 ", horario=" + horario +
                 ", valor=" + valor +
                 ", cliente=" + cliente +

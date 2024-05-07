@@ -3,6 +3,7 @@ package entidades;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Sessao {
     private Filme filme;
@@ -16,6 +17,9 @@ public class Sessao {
         this.filme = filme;
         this.horario = horario;
         this.valor = preço;
+    }
+
+    public Sessao() {
     }
 
     // metodos get set
@@ -65,6 +69,16 @@ public class Sessao {
         ingressos.add(ingresso);
     }
 
+    public void removeIngresso(UUID id){
+        for(Ingresso i: ingressos){
+            if(i.getId().equals(id)){
+                ingressos.remove(i);
+                return;
+            }
+        }
+        System.out.println("Não encontrado");
+    }
+
     public Double vendaIngressos(){
         double sum = 0;
         for(Ingresso i: getIngressos()) {
@@ -97,6 +111,7 @@ public class Sessao {
             if(i % 8 == 0) System.out.println();
             i-=8;
         }
+
     }
 
     public void listarIngressos(){
@@ -106,14 +121,31 @@ public class Sessao {
         }
     }
 
-    public void ocupar(Cadeira cadeira){
+    public Boolean isDisponivel(String cadeira){
         for(Cadeira c: getCadeiras()) {
-            if(cadeira.getNumero().equals(c.getNumero()) && !c.getOcupado()){
-                c.ocupar();
-                return;
+                if(cadeira.equals(c.getNumero()) && c.getOcupado()){
+                    return true;
+                }
             }
-        }
-        System.out.println("ja está ocupada amigo");
+        return false;
     }
 
+
+    public void ocupar(String cadeira){
+        for(Cadeira c: getCadeiras()) {
+            if(cadeira.equals(c.getNumero())){
+                c.ocupar();
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Sessao{" +
+                "filme=" + filme +
+                ", horario=" + horario +
+                ", valor=" + valor +
+                ", ingressos=" + ingressos +
+                '}';
+    }
 }
