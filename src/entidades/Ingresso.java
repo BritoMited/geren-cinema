@@ -1,6 +1,7 @@
 package entidades;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public class Ingresso {
@@ -11,6 +12,8 @@ public class Ingresso {
     private LocalDateTime horario;
     private Double valor;
     private Cliente cliente;
+
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");
 
     public Ingresso(Filme filme, Cadeira cadeira, LocalDateTime horario, Double valor, Cliente cliente) {
         this.id = UUID.randomUUID();
@@ -75,9 +78,9 @@ public class Ingresso {
     public String toString() {
         return "Ingresso" +
                 " id: " + id +
-                ", filme: " + filme +
-                ", horario: " + horario +
-                ", valor: R$ " + valor +
+                "| Filme: " + filme +
+                "| Horário: " + horario.format(dtf) +
+                "| Valor: R$ " + valor +
                     cliente;
     }
 }

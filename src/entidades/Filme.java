@@ -28,7 +28,7 @@ public class Filme {
     @Override
     public String toString() {
         return
-                ", titulo: '" + titulo +
-                ", genero: '" + genero;
+                "titulo: " + titulo +
+                ", genero: " + genero;
     }
 }

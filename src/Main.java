@@ -12,9 +12,9 @@ import java.util.UUID;
 
 public class Main {
 
-    static final String caminhoIngresso = "C:\\Estudosjava\\geren-cinema\\src\\Ingressos\\IngressoCliente";
-
-    static final String caminhoIngressoADM = "C:\\Estudosjava\\geren-cinema\\src\\Ingressos\\IngressoADM";
+    //mudar constantes dependendo do pc
+    static final String caminhoIngresso = "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\cinema\\geren-cinema\\src\\Ingressos\\IngressosCliente";
+    static final String caminhoIngressoADM = "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\cinema\\geren-cinema\\src\\Ingressos\\IngressosADM";
     public static void main(String[] args) throws IOException {
 
         Scanner sc = new Scanner(System.in); // Inicialização do Scanner para entrada de dados
@@ -25,26 +25,19 @@ public class Main {
         LocalDateTime horario = LocalDateTime.parse(cc, dtf); // Conversão da string para LocalDateTime
 
         // Inicialização de um array de Sessao com tamanho 13
-        Sessao[] sessoes = new Sessao[13];
-
-        // Criação de objetos Filme, Cliente e Cadeira
-        Filme filme = new Filme("interestelas", "acao");
-        Cliente cliente = new Cliente(18, true);
-        Cliente cliente2 = new Cliente(18, false);
-        Cadeira cadeira = new Cadeira("A7");
-        Cadeira cadeira2 = new Cadeira("A6");
+        Sessao[] sessoes = new Sessao[13]; // definido a quantidade maxima de sessoes que esse cinema suporta
 
         // Criação de uma sessão e configuração das cadeiras
-        sessoes[0] = new Sessao(filme, horario, 20.00);
+        sessoes[0] = new Sessao(new Filme("Interestelar", "Ação"), horario, 20.00);
         sessoes[0].gerarCadeiras(8, 8);
 
         // Criação de ingressos e ocupação de cadeiras na sessão
-        Ingresso ingresso = new Ingresso(sessoes[0].getFilme(), cadeira, sessoes[0].getHorario(), sessoes[0].getValor(), cliente);
-        Ingresso ingresso2 = new Ingresso(sessoes[0].getFilme(), cadeira2, sessoes[0].getHorario(), sessoes[0].getValor(), cliente2);
+        Ingresso ingresso = new Ingresso(sessoes[0].getFilme(),  new Cadeira("A7"), sessoes[0].getHorario(), sessoes[0].getValor(), new Cliente(18, true));
+        Ingresso ingresso2 = new Ingresso(sessoes[0].getFilme(), new Cadeira("A6"), sessoes[0].getHorario(), sessoes[0].getValor(), new Cliente(18, false));
         sessoes[0].ocupar(ingresso.getCadeira());
         sessoes[0].ocupar(ingresso2.getCadeira());
 
-        // Adição dos ingressos à sessão e exibição dos ingressos vendidos
+        // Adição dos ingressos à sessão
         sessoes[0].addIngresso(ingresso);
         sessoes[0].addIngresso(ingresso2);
 
@@ -57,6 +50,7 @@ public class Main {
             switch (op) {
                 // Opções para o cliente
                 case 1:
+                    System.out.println("menu - CLIENTE");
                     do {
                         System.out.println("[0] - LISTAR SESSÕES DISPONIVEIS");
                         System.out.println("[1] - LISTAR CADEIRAS DISPONIVEIS");
@@ -83,27 +77,32 @@ public class Main {
                                 // Listar cadeiras disponíveis na sessão selecionada
                                 System.out.println("listando...");
                                 sessoes[n].listarCadeiras();
+                                System.out.println();
                                 break;
                             case 2:
                                 // Comprar ingressos para a sessão selecionada
-                                System.out.println("Quantidade de ingressos");
+                                System.out.println("Quantidade de ingressos: ");
                                 int quant = sc.nextInt();
                                 for (int i = 0; i < quant; i++) {
+
                                     sc.nextLine();
-                                    System.out.println("Qual cadeira deseja?");
+                                    System.out.println("Digite o número da cadeira desejada: (ex: A2)");
                                     String numeroCadeira = sc.nextLine();
                                     numeroCadeira = numeroCadeira.toUpperCase();
+
                                     // Verificação da disponibilidade da cadeira
                                     while (sessoes[n].isDisponivel(numeroCadeira)) {
-                                        System.out.println("Cadeira indisponivel, escolha outra:");
+                                        System.out.println("Cadeira indisponível, escolha outra:");
                                         numeroCadeira = sc.nextLine();
                                         numeroCadeira = numeroCadeira.toUpperCase();
                                     }
+
                                     // Informações do cliente
                                     System.out.println("Estudante: (true / false)");
                                     boolean estudante = sc.nextBoolean();
-                                    System.out.println("Sua idade");
+                                    System.out.println("Sua idade: ");
                                     int idade = sc.nextInt();
+
                                     // Adição do ingresso à sessão e marcação da cadeira como ocupada
                                     Ingresso ingressoVer = new Ingresso(sessoes[n].getFilme(), new Cadeira(numeroCadeira), sessoes[n].getHorario(), sessoes[n].getValor(), new Cliente(idade, estudante));
                                     sessoes[n].addIngresso(ingressoVer);
@@ -117,23 +116,28 @@ public class Main {
                                 // Rembolsar ingresso
                                 sc.nextLine();
                                 sessoes[n].listarIngressos();
+
                                 System.out.println("Digite o UUID:");
                                 String uuidString = sc.nextLine();
+
                                 UUID uuid = UUID.fromString(uuidString);
+
                                 sessoes[n].removeIngresso(uuid);
                                 sessoes[n].listarIngressos();
                                 break;
                             case 4:
                                 // Imprimir ingresso
-                                System.out.println("imprimindo...");
                                 FileManager fileManager = new FileManager();
                                 File diretorio = fileManager.criarPasta(caminhoIngresso);
+
                                 System.out.println("Digite o UUID:");
                                 String uuidString_ = sc.nextLine();
+
                                 UUID uuid_ = UUID.fromString(uuidString_);
                                 sessoes[n].findIngresso(uuid_);
                                 File arquivo = fileManager.criarArquivo(diretorio, sessoes[n].findIngresso(uuid_). getId().toString() + ".txt");
                                 fileManager.gravarDados(arquivo,sessoes[n].findIngresso(uuid_));
+                                System.out.println("imprimindo...");
                                 break;
 
                             case 5:
@@ -149,14 +153,14 @@ public class Main {
                                 System.out.println("saindo...");
                                 break;
                             default:
-                                System.out.println("funcao invalida");
+                                System.out.println("função inválida");
                                 break;
                         }
                     } while (op != 6);
                     break;
                 case 2:
                     // Opções para o administrador
-                    System.out.println("ADM");
+                    System.out.println("menu - ADM");
                     do {
                         System.out.println("[1] - CRIAR SESSAO");
                         System.out.println("[2] - LISTAR INGRESSOS E TOTAL VENDIDO");
@@ -167,16 +171,17 @@ public class Main {
                             case 1:
                                 // Criar nova sessão
                                 sc.nextLine();
-                                System.out.println("Digite o nome do filme");
+                                System.out.println("Digite o nome do filme:");
                                 String nomeFilme = sc.nextLine();
-                                System.out.println("Digite o genero");
+                                System.out.println("Digite o gênero:");
                                 String generoFilme = sc.nextLine();
-                                System.out.println("Digite o Horario da sessão, dd/MM/yy HH:mm");
+                                System.out.println("Digite o Horário da sessão: (dd/MM/yy HH:mm)");
                                 LocalDateTime horarioSessao = LocalDateTime.parse(sc.nextLine(), dtf);
-                                System.out.println("Digite o preço da sessão");
+                                System.out.println("Digite o preço da sessão: ");
                                 Double precoSessao = sc.nextDouble();
-                                System.out.println("Digite o numero da sessão");
+                                System.out.println("Digite o número da sessão: ");
                                 n = sc.nextInt();
+
                                 // Adicionar nova sessão ao array de sessões
                                 sessoes[n] = new Sessao(new Filme(nomeFilme, generoFilme), horarioSessao, precoSessao);
                                 sessoes[n].gerarCadeiras(8, 8);
@@ -190,7 +195,7 @@ public class Main {
                                 break;
                             case 3:
                                 //imprimindo todos os ingressos vendidos
-                                System.out.println("[2] - IMPRIMINDO TODOS OS INGRESSOS VENDIDOS");
+
                                 FileManager fileManager = new FileManager();
                                 File diretorio = fileManager.criarPasta(caminhoIngressoADM);
                                 File arquivo = fileManager.criarArquivo(diretorio,  "IngressosADM.txt");
@@ -198,12 +203,13 @@ public class Main {
                                 for(Ingresso i : sessoes[n].getIngressos()){
                                     fileManager.gravarDados(arquivo, i);
                                 }
+                                System.out.println("imprimindo...");
                                 break;
                             case 5 :
                                 System.out.println("Saindo...");
                                 break;
                             default:
-                                System.out.println("Numero Invalido");
+                                System.out.println("Número inválido");
                                 break;
                         }
                     } while (op != 5);
@@ -213,7 +219,7 @@ public class Main {
                     System.out.println("saindo...");
                     break;
                 default:
-                    System.out.println("valor invalido");
+                    System.out.println("valor inválido");
                     break;
             }
         } while (op != 4);

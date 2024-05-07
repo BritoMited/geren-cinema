@@ -31,6 +31,6 @@ public class Cadeira {
     // Sobrescrita do método toString para representação textual da cadeira
     @Override
     public String toString() {
-        return numero + " " +  ocupado; // Retorna o número da cadeira seguido de sua condição de ocupação
+        return numero + " [" + ocupado + "]"; // Retorna o número da cadeira seguido de sua condição de ocupação
     }
 }

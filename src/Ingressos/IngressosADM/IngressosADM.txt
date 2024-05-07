@@ -1,0 +1,18 @@
+5d23a4d4-f208-4fc7-ba25-4d1144bfc127;
+A7;
+ idade: 18, estudante: true;
+2024-04-12T19:30;
+, titulo: 'Interestelar, genero: 'Ação;
+10.0;
+
+
+
+07e3094d-5494-4c24-b775-669ab050e590;
+A6;
+ idade: 18, estudante: false;
+2024-04-12T19:30;
+, titulo: 'Interestelar, genero: 'Ação;
+20.0;
+
+
+

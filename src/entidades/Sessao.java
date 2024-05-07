@@ -1,6 +1,7 @@
 package entidades;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -11,6 +12,7 @@ public class Sessao {
     private Double valor; // Valor do ingresso para a sessão
     private List<Cadeira> cadeiras; // Lista de cadeiras na sessão
     private List<Ingresso> ingressos = new ArrayList<>(); // Lista de ingressos vendidos para a sessão
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");
 
     // Construtor
     public Sessao(Filme filme, LocalDateTime horario, Double preço) {
@@ -117,13 +119,14 @@ public class Sessao {
     // Lista as cadeiras na sessão
     public void listarCadeiras(){
         int i = 0;
+        System.out.println("--------------------------------------");
         for(Cadeira c: getCadeiras()) {
             System.out.print(c + " ");
             i++;
             if(i % 8 == 0) System.out.println();
             i-=8;
         }
-
+        System.out.println("--------------------------------------");
     }
 
     // Lista os ingressos vendidos para a sessão
@@ -158,7 +161,7 @@ public class Sessao {
     public String toString() {
         return
                  filme +
-                ", horario:" + horario +
+                ", horario:" + horario.format(dtf) +
                 ", valor: " + valor;
     }
 }
