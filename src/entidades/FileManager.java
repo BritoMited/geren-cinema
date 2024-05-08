@@ -3,9 +3,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.format.DateTimeFormatter;
 
 public class FileManager {
 
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");
 
     public File criarPasta(String path) {
         File diretorio =  new File(path);
@@ -36,7 +38,7 @@ public class FileManager {
             printWriter.print(ingresso.getCliente());
             printWriter.print(";");
             printWriter.print("\n");
-            printWriter.print(ingresso.getHorario());
+            printWriter.print("Horário: " + ingresso.getHorario().format(dtf));
             printWriter.print(";");
             printWriter.print("\n");
             printWriter.print(ingresso.getFilme());

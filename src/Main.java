@@ -13,8 +13,8 @@ import java.util.UUID;
 public class Main {
 
     //mudar constantes dependendo do pc
-    static final String caminhoIngresso = "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\cinema\\geren-cinema\\src\\Ingressos\\IngressosCliente";
-    static final String caminhoIngressoADM = "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\cinema\\geren-cinema\\src\\Ingressos\\IngressosADM";
+    static final String caminhoIngresso = "C:\\Users\\autologon\\Desktop\\geren-cinema\\src\\Ingressos\\IngressosCliente";
+    static final String caminhoIngressoADM = "C:\\Users\\autologon\\Desktop\\geren-cinema\\src\\Ingressos\\IngressosADM";
     public static void main(String[] args) throws IOException {
 
         Scanner sc = new Scanner(System.in); // Inicialização do Scanner para entrada de dados

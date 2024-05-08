@@ -1,9 +1,0 @@
-5d133fe3-95dd-4e3f-a4b5-f536ea003130;
-D4;
- idade: 20, estudante: true;
-2024-05-10T20:00;
-titulo: de volta pro passado, genero: comedia;
-15.0;
-
-
-
