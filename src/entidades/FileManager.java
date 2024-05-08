@@ -27,10 +27,10 @@ public class FileManager {
 
             FileWriter fileWriter = new FileWriter(file, true);
             PrintWriter printWriter = new PrintWriter(fileWriter);
-            printWriter.print(ingresso.getId());
+            printWriter.print("Id: " +ingresso.getId());
             printWriter.print(";");
             printWriter.print("\n");
-            printWriter.print(ingresso.getCadeira());
+            printWriter.print("Cadeira: " + ingresso.getCadeira());
             printWriter.print(";");
             printWriter.print("\n");
             printWriter.print(ingresso.getCliente());
@@ -42,7 +42,7 @@ public class FileManager {
             printWriter.print(ingresso.getFilme());
             printWriter.print(";");
             printWriter.print("\n");
-            printWriter.print(ingresso.getValor());
+            printWriter.print("Valor: R$"+ingresso.getValor());
             printWriter.print(";");
             printWriter.print("\n");
             printWriter.print("\n");

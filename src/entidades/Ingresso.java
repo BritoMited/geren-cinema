@@ -81,6 +81,6 @@ public class Ingresso {
                 "| Filme: " + filme +
                 "| Horário: " + horario.format(dtf) +
                 "| Valor: R$ " + valor +
-                    cliente;
+                  " " +  cliente;
     }
 }

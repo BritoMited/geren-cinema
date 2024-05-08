@@ -1,0 +1,9 @@
+Id: a338cffb-26a0-4540-aa86-a1ffa81b59fd;
+Cadeira: A4;
+idade: 34, estudante: true;
+2024-04-12T19:30;
+titulo: Interestelar, genero: Ação;
+Valor: R$10.0;
+
+
+

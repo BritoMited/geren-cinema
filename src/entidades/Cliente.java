@@ -30,7 +30,7 @@ public class Cliente {
     // Sobrescrita do método toString para representação textual do cliente
     @Override
     public String toString() {
-        return " idade: " + idade +
+        return "idade: " + idade +
                 ", estudante: " + estudante;
     }
 }
