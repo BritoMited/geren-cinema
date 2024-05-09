@@ -1,0 +1,18 @@
+Id: 014f30f8-382f-413c-ab9a-fa4b54ab3421;
+Cadeira: A7;
+idade: 18, estudante: true;
+Horário: 12/04/24 19:30;
+titulo: Interestelar, genero: Ação;
+Valor: R$10.0;
+
+
+
+Id: fdeb2a07-b41f-4ad4-b4c2-d740002fe246;
+Cadeira: A6;
+idade: 18, estudante: false;
+Horário: 12/04/24 19:30;
+titulo: Interestelar, genero: Ação;
+Valor: R$20.0;
+
+
+

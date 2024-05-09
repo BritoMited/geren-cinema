@@ -195,10 +195,12 @@ public class Main {
                                 break;
                             case 3:
                                 //imprimindo todos os ingressos vendidos
+                                System.out.println("Escolha a sessão a ser impressa: ");
+                                n = sc.nextInt();
 
                                 FileManager fileManager = new FileManager();
                                 File diretorio = fileManager.criarPasta(caminhoIngressoADM);
-                                File arquivo = fileManager.criarArquivo(diretorio,  "IngressosADM_Sala["+i+"].txt");
+                                File arquivo = fileManager.criarArquivo(diretorio,  "IngressosADM_Sala["+n+"].txt");
                                 arquivo.delete();
                                 for(Ingresso i : sessoes[n].getIngressos()){
                                     fileManager.gravarDados(arquivo, i);
