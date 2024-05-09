@@ -67,7 +67,7 @@ public class Main {
                                 // Listar informações da sessão selecionada
                                 for (int i = 0; i < sessoes.length; i++) {
                                     if(sessoes[i] != null){
-                                        System.out.println("Numero da sala ["+i+"]" + sessoes[i]);
+                                        System.out.println("Numero da sala ["+i+"] " + sessoes[i]);
                                     }
                                 }
                                 System.out.println("Digite o número da sala desejada: ");
@@ -195,6 +195,11 @@ public class Main {
                                 break;
                             case 3:
                                 //imprimindo todos os ingressos vendidos
+                                 for (int i = 0; i < sessoes.length; i++) {
+                                    if(sessoes[i] != null){
+                                        System.out.println("Numero da sala ["+i+"] " + sessoes[i]);
+                                    }
+                                }
                                 System.out.println("Escolha a sessão a ser impressa: ");
                                 n = sc.nextInt();
 
