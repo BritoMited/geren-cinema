@@ -198,7 +198,7 @@ public class Main {
 
                                 FileManager fileManager = new FileManager();
                                 File diretorio = fileManager.criarPasta(caminhoIngressoADM);
-                                File arquivo = fileManager.criarArquivo(diretorio,  "IngressosADM.txt");
+                                File arquivo = fileManager.criarArquivo(diretorio,  "IngressosADM_Sala["+i+"].txt");
                                 arquivo.delete();
                                 for(Ingresso i : sessoes[n].getIngressos()){
                                     fileManager.gravarDados(arquivo, i);
